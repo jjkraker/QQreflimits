@@ -1,3 +1,33 @@
+#' Title
+#' @name Name
+#'
+#' @description
+#' 1-2 sentence description
+#'
+#' @usage
+#' BC_limits(X, perc=0.95, cover=0.9, censor = 0, winsor=0,
+#'           bottom=-3, top=3, epsilon=0.0001, neff=NA, CI_corrfac=NA)
+#'
+#' @param input  meaning
+#' @param input2  meaning2
+#' @param input3	*optional* (default of xx) - meaning3
+#'
+#' @details
+#' Technical details from references
+#'
+#' @returns A list containing the following components:
+#'
+#'   \item{value1}{description1}
+#'   \item{value2}{description2}
+#'
+#' @author Douglas M. Hawkins, Jessica J. Kraker <krakerjj@uwec.edu>
+#'
+# @example /Example/____.R
+# @references journal article, book, etc.
+# @importFrom stats optimize
+#'
+#' @export
+#
 # Getting Box Cox transformation to normality and finding reference value
 # using golden section search
 # Arguments:
@@ -24,17 +54,17 @@
 # sdof:       the sd of the Box-Cox transform.
 # intercept:  the intercept of the fitted QQ regression.
 # slope:      the slope of the fitted QQ regression.
-# Pval:       the P value of the QQ correlation. 
- 
-BC_limits = function(X, perc=0.95, cover=0.9, censor = 0, winsor=0, 
+# Pval:       the P value of the QQ correlation.
+
+BC_limits = function(X, perc=0.95, cover=0.9, censor = 0, winsor=0,
   bottom=-3, top=3, epsilon=0.0001, neff=NA, CI_corrfac=NA) {
-  zalf   <- qnorm((1+perc)/2)	 
-  cilim  <- qnorm((1+cover)/2) 
+  zalf   <- qnorm((1+perc)/2)
+  cilim  <- qnorm((1+cover)/2)
   if (sum(is.na(X)) > 0) print(paste("BC limits cases, missing", length(X), sum(is.na(X))))
-  X      <- X[!is.na(X)]              # Just in case some NA slip through  
+  X      <- X[!is.na(X)]              # Just in case some NA slip through
   n      <- length(X)
 
-  if (is.na(neff)) neff <- n 
+  if (is.na(neff)) neff <- n
 
   if (is.na(CI_corrfac)) CI_corrfac <- 0.68 - 5.09/n    # n adjustment for CIs
 
@@ -61,12 +91,12 @@ BC_limits = function(X, perc=0.95, cover=0.9, censor = 0, winsor=0,
 	d <- bottom + h / gr
     bcpowc  <- (sorted^c - 1) / c
 	bcpowd  <- (sorted^d - 1) / d
-	fc      <- cor(bcpowc[keep], ns[keep])  
-	fd      <- cor(bcpowd[keep], ns[keep]) 
+	fc      <- cor(bcpowc[keep], ns[keep])
+	fd      <- cor(bcpowd[keep], ns[keep])
     if (is.na(fc+fd)) {
       cat(sprintf("Error in BC_Limits. Trial powers %5.5f %5.5f %6.5f %6.5f\n", c, d, fc, fd))
-      flag <- flag + 1	
-      if (flag == 1) {	  
+      flag <- flag + 1
+      if (flag == 1) {
 	    print("Input data first fail" )
         print(sorted[keep])
 	    print("c xform")
@@ -94,36 +124,36 @@ BC_limits = function(X, perc=0.95, cover=0.9, censor = 0, winsor=0,
 	    bestpow <- d
 	    bestxform <- (X^d-1)/d
 		}
-	  }  
-	}   
+	  }
+	}
   fitlin  <- lm(sort(bestxform)[keep] ~ ns[keep])
   cofs    <- coef(fitlin)
   cut     <- cofs[1]
   slope   <- cofs[2]
-  c4      <- 4*(n-1) / (4*n-3)  
+  c4      <- 4*(n-1) / (4*n-3)
   meanof  <- mean(bestxform)     # Use mean and sd of data if complete
   sdof    <- sd  (bestxform) / c4
-  useeffn <- effn * CI_corrfac    
+  useeffn <- effn * CI_corrfac
   usemean <- meanof
-  usesd   <- sdof  
- 
+  usesd   <- sdof
+
   if (censor+winsor > 0) {   # Use the QQ plot regression instead
     usemean <- cut
 	usesd   <- slope
 	}
   estu     <- usemean + zalf*usesd
   estl     <- usemean - zalf*usesd
-  se       <- usesd * sqrt(1 / useeffn + zalf^2/(2*(useeffn-1)))   
+  se       <- usesd * sqrt(1 / useeffn + zalf^2/(2*(useeffn-1)))
   MoE      <- cilim * se
   offset   <- c(0, -1, 1) * MoE
- 
+
   ci       <- c(estl+offset, estu+offset)
   BClower  <- estl + offset
   BCupper  <- estu + offset
   lower    <- (1 + bestpow * BClower) ^ (1 / bestpow)
   upper    <- (1 + bestpow * BCupper) ^ (1 / bestpow)
-  
+
   Pval     <- BCr_Pval(bestr, n, censor=censor, winsor=winsor, isBC = TRUE)
-  return(list(bestr = bestr, bestpow=bestpow, bestxform=bestxform, 
+  return(list(bestr = bestr, bestpow=bestpow, bestxform=bestxform,
     lower=lower, upper=upper, BClower=BClower, BCupper=BCupper, Pval=Pval))
   }
