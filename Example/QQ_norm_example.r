@@ -20,10 +20,3 @@ title("Illustrating QQnorm with para_limits", outer=TRUE)
 basew <- QQnorm(X, main="Winsorized", winsor=wins, showsum=TRUE)
 ht   <- QQnorm(HT, main="Heavy tail", showsum=TRUE)
 htw  <- QQnorm(HT, main="Winsorized", winsor=wins, showsum=TRUE)
-
-# evaluate and review
-norm_results <- para_limits(mean(X), sd(X), n)
-norm_results
-# evaluate and review with tails
-tailed_results <- para_limits(htw$intercept, htw$slope, n, winsor=wins)
-tailed_results

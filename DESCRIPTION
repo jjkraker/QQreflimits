@@ -1,4 +1,5 @@
 Package: QQreflimits
+Version: 0.0.0.9000
 Title: Reference Limits using QQ methodology
 Authors@R: c(person("Douglas M.", "Hawkins", role = "aut"),
               person("Jessica J.", "Kraker", role = c("aut", "cre"),
@@ -12,9 +13,9 @@ Suggests:
 Imports: 
     stats
 Description: A collection of routines for finding reference limits using, 
-where appropriate, QQ methodology.  All use a data vector X of cases from 
-the reference population.  The default is to get the central 95% reference range 
-of the population, namely the 2.5 and 97.5 percentile.  
+  where appropriate, QQ methodology.  All use a data vector X of cases from 
+  the reference population.  The default is to get the central 95% reference range 
+  of the population, namely the 2.5 and 97.5 percentile.  
    * In some settings we want the 99% range. 
    * Sometimes we want only one of these limits – for example the upper 95% point.  
    * Along with the reference limit, we want a confidence interval which, 
