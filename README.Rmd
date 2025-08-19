@@ -29,6 +29,8 @@ The goal of QQreflimits is to provide routines for finding reference limits usin
       * the upper and the lower reference limits, and 
       * each of their confidence intervals.
 
+[Source code](https://github.com/jjkraker/QQreflimits) may be reviewed on GitHub.
+
 ## Installation
 
 You can install the development version of QQreflimits like so:
