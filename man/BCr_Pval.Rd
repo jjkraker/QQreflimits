@@ -30,7 +30,7 @@ the QQCC is after a shifted Box-Cox transformation.}
 Computes the P value of the quantile-quantile correlation coefficient (QQCC).
 }
 \details{
-Lowest-level function, called by other functions in package.
+Lower-level function, called by other functions in package.
 It takes information from a quantile-quantile regression, along with the
 circumstances leading up to it, to produce a P value testing for normality.
 }
