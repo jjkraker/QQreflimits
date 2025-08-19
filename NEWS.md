@@ -1,3 +1,7 @@
+# QQreflimits 1.0.1
+
+* Updated Description to more closely meet auto-check.
+
 # QQreflimits 1.0.0
 
 * Initial CRAN submission.

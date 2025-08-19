@@ -1,6 +1,6 @@
 Package: QQreflimits
-Version: 1.0.0
-Title: Reference Limits using QQ methodology
+Version: 1.0.1
+Title: Reference Limits using QQ Methodology
 Authors@R: c(person("Douglas M.", "Hawkins", role = "aut"),
               person("Jessica J.", "Kraker", role = c("aut", "cre"),
                      email = "krakerjj@uwec.edu"))
