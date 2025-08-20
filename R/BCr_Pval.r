@@ -29,7 +29,17 @@
 #'
 #' @author Douglas M. Hawkins, Jessica J. Kraker <krakerjj@uwec.edu>
 #'
-#' @example /Example/BCr_Pval_example.R
+#' @examples
+#' # compute the Pvalue for two QQCC's
+#' BCr_Pval(c(0.993, 0.99), 120)
+#' # if censored
+#' BCr_Pval(c(0.993, 0.99), 120, censor=3)
+#' # if winsorized
+#' BCr_Pval(c(0.993, 0.99), 120, winsor=3)
+#' # on Box-Cox transformed data
+#' BCr_Pval(c(0.993, 0.99), 120, isBC=TRUE)
+#' # on Box-Cox transformed data, and winsorized
+#' BCr_Pval(c(0.993, 0.99), 120, isBC=TRUE, winsor=3)
 #'
 #' @references Hawkins DM, Esquivel RN (2024). A Quantile-Quantile Toolbox for
 #' Reference Intervals.  *The Journal of Applied Laboratory Medicine*, **9:2**, 357-370.

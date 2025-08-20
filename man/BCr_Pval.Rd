@@ -45,6 +45,7 @@ BCr_Pval(c(0.993, 0.99), 120, winsor=3)
 BCr_Pval(c(0.993, 0.99), 120, isBC=TRUE)
 # on Box-Cox transformed data, and winsorized
 BCr_Pval(c(0.993, 0.99), 120, isBC=TRUE, winsor=3)
+
 }
 \references{
 Hawkins DM, Esquivel RN (2024). A Quantile-Quantile Toolbox for

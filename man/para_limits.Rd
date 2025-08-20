@@ -71,6 +71,7 @@ norm_results
 # evaluate and review with tails
 tailed_results <- para_limits(htw$intercept, htw$slope, n, winsor=wins)
 tailed_results
+
 }
 \references{
 Horn PS, Peske AJ (2005). Reference intervals: a user’s guide. Washington (DC): AACC Press.

@@ -73,6 +73,7 @@ cat("\nAnd with ", round(100*nonp_results$coverage,2),"\% confidence, the lower 
     signif(nonp_results$lower[2],5), "and", signif(nonp_results$lower[3],5),
     ";\n while the upper limit is between",
     signif(nonp_results$upper[2],5),"and",signif(nonp_results$upper[3],5),".\n\n")
+
 }
 \references{
 Horn PS, Peske AJ (2005). Reference intervals: a user’s guide. Washington (DC): AACC Press.

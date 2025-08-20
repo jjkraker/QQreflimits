@@ -1,3 +1,7 @@
+# QQreflimits 1.0.2
+
+* placed examples directly into function-building files.
+
 # QQreflimits 1.0.1
 
 * Updated Description to more closely meet auto-check.

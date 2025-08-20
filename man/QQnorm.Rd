@@ -87,6 +87,7 @@ title("Illustrating QQnorm with para_limits", outer=TRUE)
 basew <- QQnorm(X, main="Winsorized", winsor=wins, showsum=TRUE)
 ht   <- QQnorm(HT, main="Heavy tail", showsum=TRUE)
 htw  <- QQnorm(HT, main="Winsorized", winsor=wins, showsum=TRUE)
+
 }
 \references{
 Hawkins DM, Esquivel RN (2024). A Quantile-Quantile Toolbox for
